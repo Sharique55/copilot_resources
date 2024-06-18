@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,15 +31,9 @@ public class EmplController {
         return emplService.addNewEmployee(employee);
     }
 
-    @PostMapping("/test")
-    public String test(@RequestBody Object object) {
-        System.out.println("object: " + object);
-        return "test";
-    }
-
     @PutMapping("/{id}")
-    public String updateEmployeePosition(@RequestBody String id, @RequestBody String position) {
-        return emplService.updateEmployeePosition(id, position);
+    public String updateEmployeePosition(@PathVariable String id, @RequestBody Employee employee) {
+        return emplService.updateEmployeePosition(id, employee.getPosition());
     }
 
     @DeleteMapping("/{id}")

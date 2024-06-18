@@ -11,3 +11,22 @@ Content-Type: application/json
     "position": "Software Engineer"
 }
 ###
+
+POST http://localhost:8080/employees/add
+Content-Type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "hireDate": "2021-01-01",
+    "position": "Software Engineer"
+}
+###
+
+PUT http://localhost:8080/employees/3
+Content-Type: application/json
+
+{
+    "position": "Software Engineer II"
+}
+###
