@@ -73,7 +73,7 @@ public class EmplControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(e)))
                 .andExpect(status().isOk())
-                .andExpect(content().json(objectMapper.writeValueAsString(e)));              
+                .andExpect(content().json(objectMapper.writeValueAsString(e))); // will throw error if to string, equals and hashCode are not implemented             
 
         verify(emplService, times(1)).addNewEmployee(e);
         System.out.println(e);
