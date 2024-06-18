@@ -1,7 +1,5 @@
 package com.barosanu.empl;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,13 +33,12 @@ public class EmplService {
         return "Deleted";
     }
 
-    private Date getDateFromString(String date) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            return formatter.parse(date);
-        } catch (Exception e) {
-            return null;
-        }
+    public Employee getEmployeeById(String id) {
+        return employeeRepository.findById(Long.parseLong(id)).get();
     }
-    
+
+    public List<Employee> getEmployeesByPosition(String position) {
+        return employeeRepository.findByPosition(position);
+    }
+   
 }
