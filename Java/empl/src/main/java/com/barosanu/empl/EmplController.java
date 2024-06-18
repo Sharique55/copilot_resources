@@ -1,39 +1,51 @@
 package com.barosanu.empl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.barosanu.empl.models.Employee;
-
-import java.util.Date;
-import java.util.List;
 
 @RestController
 @RequestMapping("/employees")
 public class EmplController {
 
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private EmplService emplService;
 
     @GetMapping
     public List<Employee> getEmployees() {
-        return employeeRepository.findAll();
+        return emplService.getEmployees();
     }
 
-    @PostMapping(path="/add")
-    public @ResponseBody String addNewEmployee (@RequestParam String firstName, @RequestParam String lastName, @RequestParam Date hireDate, @RequestParam String position) {
-        Employee n = new Employee();
-        n.setFirstName(firstName);
-        n.setLastName(lastName);
-        n.setHireDate(hireDate);
-        n.setPosition(position);
-        employeeRepository.save(n);
-        return "Saved";
+    @PostMapping("/add")
+    public Employee addNewEmployee(@RequestBody Employee employee) {
+        return emplService.addNewEmployee(employee);
     }
+
+    @PostMapping("/test")
+    public String test(@RequestBody Object object) {
+        System.out.println("object: " + object);
+        return "test";
+    }
+
+    @PutMapping("/{id}")
+    public String updateEmployeePosition(@RequestBody String id, @RequestBody String position) {
+        return emplService.updateEmployeePosition(id, position);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteEmployee(@RequestBody String id) {
+        return emplService.deleteEmployee(id);
+    }
+
+
     
 }

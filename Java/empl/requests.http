@@ -1,1 +1,13 @@
 GET http://localhost:8080/employees
+###
+
+POST http://localhost:8080/employees/add
+Content-Type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "hireDate": "2021-01-01",
+    "position": "Software Engineer"
+}
+###
