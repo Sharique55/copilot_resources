@@ -1,7 +1,3 @@
-create DATABASE employees;
-
-use employees;
-
 CREATE TABLE employees (
     id INT PRIMARY KEY AUTO_INCREMENT,
     last_name VARCHAR(50) NOT NULL,
@@ -26,3 +22,5 @@ insert into employees (last_name, first_name, hire_date, position) values ('Brow
 insert into tasks (task_name, task_status, employee_id) values ('Task 1', 'In Progress', 1);
 insert into tasks (task_name, task_status, employee_id) values ('Task 2', 'In Progress', 2);
 insert into tasks (task_name, task_status, employee_id) values ('Task 3', 'In Progress', 3);
+
+CREATE DATABASE cool_app;
