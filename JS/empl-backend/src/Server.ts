@@ -1,0 +1,27 @@
+import express from "express";
+import { Routes } from "./routes/Routes";
+
+
+export class Server {
+
+    private app = express();
+    private routes = new Routes(this.app);
+
+    private config(){
+        this.app.use(express.json());
+    }
+    private loadRoutes(){
+        this.routes.loadRoutes();
+    }
+
+    public startServer(){
+        this.config();
+        this.loadRoutes();
+        this.app.listen(3000, ()=>{
+            console.log("Server running on port 3000");
+        })
+        this.app.on('error', (error: any) => {
+            console.error('Error: ', error);
+        });
+    }
+}
