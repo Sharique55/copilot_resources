@@ -3,19 +3,13 @@ import { EmplService } from "../services/EmplService";
 
 export class EmplController {
 
-    private emplService: EmplService;
-
-    constructor (emplService: EmplService){
-        console.log("EmplController created");
-        this.emplService = emplService;
-    }
+    private emplService: EmplService = new EmplService();
 
     public sayHello(req:Request, res:Response){
         res.send("Hello World");
     }
 
     public async getAll(req:Request, res:Response){
-        console.log("this: " + this);
         const allEmpl = await this.emplService.getAllEmployees();
         res.send(allEmpl);
     }

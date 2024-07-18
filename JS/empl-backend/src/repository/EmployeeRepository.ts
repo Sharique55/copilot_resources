@@ -8,10 +8,6 @@ export class EmployeeRepository {
 
     private connection = createPool(dbConfig);
 
-    constructor() {
-        console.log("EmployeeRepository created");
-    }
-
     public async getAllEmployees() {
         const result = await this.connection.query('SELECT * FROM employees');
         return result[0] as Employee[];

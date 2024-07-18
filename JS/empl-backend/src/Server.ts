@@ -1,18 +1,12 @@
 import express from "express";
 import { EmplRoutes } from "./routes/EmplRoutes";
-import { EmployeeRepository } from "./repository/EmployeeRepository";
-import { EmplService } from "./services/EmplService";
-import { EmplController } from "./controllers/EmplController";
 
 
 export class Server {
 
     private app = express();
 
-    private employeeRepository = new EmployeeRepository();
-    private emplService = new EmplService(this.employeeRepository);
-    private emplController = new EmplController(this.emplService);
-    private routes = new EmplRoutes(this.app, this.emplController);
+    private routes = new EmplRoutes(this.app);
 
     private config(){
         this.app.use(express.json());

@@ -3,14 +3,7 @@ import { EmployeeRepository } from "../repository/EmployeeRepository";
 
 export class EmplService {
 
-    private emplRepository: EmployeeRepository;
-
-    constructor (emplRepository: EmployeeRepository){
-        console.log("EmplService created");
-        this.emplRepository = emplRepository;
-    }
-
-
+    private emplRepository: EmployeeRepository = new EmployeeRepository();
 
     public async getAllEmployees() {
         return await this.emplRepository.getAllEmployees();

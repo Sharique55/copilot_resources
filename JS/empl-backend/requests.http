@@ -3,3 +3,18 @@ GET http://localhost:3000/empl/hello
 
 GET http://localhost:3000/empl/
 ###
+
+
+GET http://localhost:3000/empl/8
+###
+
+POST http://localhost:3000/empl/
+Content-Type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "hireDate": "2021-01-01",
+    "position": "Software Engineer"
+}
+###

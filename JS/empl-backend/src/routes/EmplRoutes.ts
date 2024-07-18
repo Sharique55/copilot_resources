@@ -4,12 +4,10 @@ import { EmplController } from '../controllers/EmplController';
 
 export class EmplRoutes {
     private app: Application;
-    private emplController: EmplController;
+    private emplController: EmplController = new EmplController();
     private router = Router();
 
-    constructor(app: Application, emplController: EmplController){
-        console.log("EmplRoutes created");
-        this.emplController = emplController
+    constructor(app: Application, ){
         this.app = app;
         this.app.use('/empl', this.router);
     }
