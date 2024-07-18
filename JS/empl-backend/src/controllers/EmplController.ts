@@ -23,14 +23,19 @@ export class EmplController {
     public async create(req:Request, res:Response){
         const employee = req.body;
         const newEmpl = await this.emplService.createEmployee(employee);
-        res.send(newEmpl);
+        const newEmplId = (newEmpl as any).insertId;
+        res.send(`Employee with id ${newEmplId} created`);
     }
 
     public async updatePosition(req:Request, res:Response){
         const id = parseInt(req.params.id);
         const position = req.body.position;
-        const updatedEmpl = await this.emplService.updateEmployeePosition(id, position);
-        res.send(updatedEmpl);
+        const updateResult = await this.emplService.updateEmployeePosition(id, position);
+        if((updateResult as any).affectedRows === 0){
+            res.send(`Employee with id ${id} not found`);
+            return;
+        }
+        res.send(`Position of employee with id ${id} updated to ${position}`);
     }
 
     public async delete(req:Request, res:Response){
@@ -40,7 +45,11 @@ export class EmplController {
     }
 
     public async getByPosition(req:Request, res:Response){
-        const position = req.params.position;
+        const position = req.query?.position as string;
+        if (!position) {
+            res.send("Position query parameter is required");
+            res.status(400);            
+        }
         const empl = await this.emplService.getEmployeesByPosition(position);
         res.send(empl);
     }

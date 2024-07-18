@@ -7,14 +7,14 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Current file",
+            "name": "start server",
             "runtimeArgs": [
                 "-r",
                 "ts-node/register"
             ],
             "cwd": "${workspaceFolder}",
             "args": [
-                "${relativeFile}"
+                "src/index.ts"
             ],
             "envFile": "${workspaceFolder}/.env",
             "console": "integratedTerminal"

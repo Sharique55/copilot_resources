@@ -24,7 +24,7 @@ export class EmployeeRepository {
 
     public async createEmployee(employee: Employee) {
         const result = await this.connection.query(
-            'INSERT INTO employees (firstName, lastName, hireDate, position) VALUES (?, ?, ?, ?)',
+            'INSERT INTO employees (first_name, last_name, hire_date, position) VALUES (?, ?, ?, ?)',
             [
                 employee.firstName,
                 employee.lastName,
