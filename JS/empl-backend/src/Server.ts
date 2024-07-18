@@ -1,11 +1,11 @@
 import express from "express";
-import { Routes } from "./routes/Routes";
+import { EmplRoutes } from "./routes/Routes";
 
 
 export class Server {
 
     private app = express();
-    private routes = new Routes(this.app);
+    private routes = new EmplRoutes(this.app);
 
     private config(){
         this.app.use(express.json());

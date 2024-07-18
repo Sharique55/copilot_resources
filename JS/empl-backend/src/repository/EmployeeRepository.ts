@@ -21,4 +21,31 @@ export class EmployeeRepository {
         }
         return empl[0];
     }
+
+    public async createEmployee(employee: Employee) {
+        const result = await this.connection.query(
+            'INSERT INTO employees (firstName, lastName, hireDate, position) VALUES (?, ?, ?, ?)',
+            [
+                employee.firstName,
+                employee.lastName,
+                employee.hireDate,
+                employee.position
+            ]);
+        return result[0];
+    }
+
+    public async updateEmployeePosition(id: number, position: string) {
+        const result = await this.connection.query('UPDATE employees SET position = ? WHERE id = ?', [position, id]);
+        return result[0];
+    }
+
+    public async deleteEmployee(id: number) {
+        const result = await this.connection.query('DELETE FROM employees WHERE id = ?', [id]);
+        return result[0];
+    }
+
+    public async getEmployeesByPosition(position: string) {
+        const result = await this.connection.query('SELECT * FROM employees WHERE position = ?', [position]);
+        return result[0] as Employee[];
+    }
 }
