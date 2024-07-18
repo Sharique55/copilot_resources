@@ -1,11 +1,18 @@
 import express from "express";
-import { EmplRoutes } from "./routes/Routes";
+import { EmplRoutes } from "./routes/EmplRoutes";
+import { EmployeeRepository } from "./repository/EmployeeRepository";
+import { EmplService } from "./services/EmplService";
+import { EmplController } from "./controllers/EmplController";
 
 
 export class Server {
 
     private app = express();
-    private routes = new EmplRoutes(this.app);
+
+    private employeeRepository = new EmployeeRepository();
+    private emplService = new EmplService(this.employeeRepository);
+    private emplController = new EmplController(this.emplService);
+    private routes = new EmplRoutes(this.app, this.emplController);
 
     private config(){
         this.app.use(express.json());
@@ -17,7 +24,7 @@ export class Server {
     public startServer(){
         this.config();
         this.loadRoutes();
-        this.app.listen(3000, ()=>{
+        this.app.listen(3000, function () {
             console.log("Server running on port 3000");
         })
         this.app.on('error', (error: any) => {
