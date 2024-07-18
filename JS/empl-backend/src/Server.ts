@@ -1,7 +1,5 @@
 import express from "express";
 import { EmplRoutes } from "./routes/EmplRoutes";
-import { errorHandler } from "./utils/ErrorHandler";
-
 
 export class Server {
 
@@ -11,7 +9,6 @@ export class Server {
 
     private config(){
         this.app.use(express.json());
-        this.app.use(errorHandler)
     }
     private loadRoutes(){
         this.routes.loadRoutes();
