@@ -7,16 +7,9 @@ export class Server {
 
     private routes = new EmplRoutes(this.app);
 
-    private config(){
-        this.app.use(express.json());
-    }
-    private loadRoutes(){
-        this.routes.loadRoutes();
-    }
 
     public startServer(){
-        this.config();
-        this.loadRoutes();
+        this.routes.loadRoutes();
         this.app.listen(3000, function () {
             console.log("Server running on port 3000");
         })
