@@ -12,7 +12,7 @@ const AddEmpl: React.FC = () => {
     await addEmployee({
       firstName: firstName,
       lastName: lastName,
-      hireDate: new Date().toISOString().slice(0, 10),
+      hireDate: new Date().toISOString().split('T')[0],
       position: position
     })
 
