@@ -36,7 +36,7 @@ const ListEmpl = () => {
             <tr key={employee.id}>
               <td>{employee.firstName}</td>
               <td>{employee.lastName}</td>
-              <td>{employee.hireDate.toISOString()}</td>
+              <td>{employee.hireDate}</td>
               <td>{employee.position}</td>
             </tr>
           ))}

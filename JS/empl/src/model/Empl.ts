@@ -2,6 +2,6 @@ export type Employee = {
     id: number;
     firstName: string;
     lastName: string;
-    hireDate: Date;
+    hireDate: string;
     position: string;
 }

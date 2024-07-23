@@ -1,6 +1,12 @@
 import { Application } from 'express';
 import express, { Router } from "express";
 import { EmplController } from '../controllers/EmplController';
+import cors, {CorsOptions} from 'cors'
+
+const corsOptions: CorsOptions = {
+    origin: '*',
+    allowedHeaders: '*'
+}
 
 export class EmplRoutes {
     private app: Application;
@@ -11,6 +17,7 @@ export class EmplRoutes {
         this.app = app;
         this.router.use(express.json());
         this.app.use('/empl', this.router);
+        this.router.use(cors(corsOptions));
     }
 
     public loadRoutes(){
