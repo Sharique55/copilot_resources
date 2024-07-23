@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import { EmployeeRepository } from "../repository/EmployeeRepository";
+import { InMemoryEmplRepo } from "../repository/InMemoryRepository";
 
 export class EmplController {
 
-    private emplRepository: EmployeeRepository = new EmployeeRepository();
+    private emplRepository: InMemoryEmplRepo = new InMemoryEmplRepo();
 
     public sayHello(req:Request, res:Response){
         res.send("Hello World");
