@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { addEmployee } from '../services/DataService';
+import { addEmployee } from '../services/DataServiceMock';
 import { Link } from 'react-router-dom';
 
 const AddEmpl: React.FC = () => {
