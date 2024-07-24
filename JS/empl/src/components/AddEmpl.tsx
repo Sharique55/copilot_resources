@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { addEmployee } from '../services/DataService';
+import { Link } from 'react-router-dom';
 
 const AddEmpl: React.FC = () => {
   const [firstName, setFirstName] = useState('');
@@ -48,6 +49,7 @@ const AddEmpl: React.FC = () => {
       {
         addedLabel ? <p>{addedLabel}</p> : null
       }
+      <Link to="/list">Back to List</Link>
     </div>
   );
 };
