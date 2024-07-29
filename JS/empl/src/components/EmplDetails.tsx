@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { getEmployee, getEmployeeBio } from '../services/DataServiceMock';
+import { getEmployee, getEmployeeBio } from '../services/DataService';
 import { Employee } from '../model/Empl';
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 function EmplDetails() {
   const [employee, setEmployee] = useState<Employee | null>(null);
@@ -45,6 +45,8 @@ function EmplDetails() {
         <strong>Position:</strong> {employee.position} <br />
         <br />
         <strong>Bio:</strong> {employeeBio} <br />
+        <br />
+        <Link to="/list">Back to List</Link>
     </div>
   )
 

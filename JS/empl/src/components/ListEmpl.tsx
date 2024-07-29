@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getEmployees } from '../services/DataServiceMock';
+import { getEmployees } from '../services/DataService';
 import { Employee } from '../model/Empl';
 import { Link } from 'react-router-dom';
 
