@@ -1,6 +1,6 @@
 # Generate a virtual environment:
 ```bash
-python3 -m venv venv
+python3 -m venv .venv
 source venv/bin/activate
 ```
 # Install the requirements:
